@@ -1,6 +1,7 @@
 from typing import Union
 
-from fastapi import FastAPI
+from fastapi import FastAPI 
+import books_data 
 
 app = FastAPI()
 
@@ -11,9 +12,7 @@ def read_root():
 
 @app.get("/books/{book_id}")
 def git_book(book_id:int):
-    return {"title": "tomer first book",
-             "author": "levi",
-             "date": "01/01/2025"}
+    return books_data.getBook(book_id)
 
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
